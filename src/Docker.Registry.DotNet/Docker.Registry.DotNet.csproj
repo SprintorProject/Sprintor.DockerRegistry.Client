@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <RepositoryType>git</RepositoryType>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>2.0$(CommitHash)</VersionPrefix>
+    <Authors>hechao.feng</Authors>
+    <Description>docker registry v2 api sdk. fork from https://github.com/ChangemakerStudios/Docker.Registry.DotNet</Description>
+    <PackageIconUrl>https://raw.githubusercontent.com/ChangemakerStudios/Docker.Registry.DotNet/master/assets/docker_registry_dotnet.png</PackageIconUrl>
+    <PackageId>Docker.Registry.DotNet</PackageId>
+    <PackageProjectUrl>https://github.com/ChangemakerStudios/Docker.Registry.DotNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ChangemakerStudios/Docker.Registry.DotNet</RepositoryUrl>
+    <PackageReleaseNotes>Added Basic Authentication (thanks Zguy). Fixed issue with operational parameters (thanks lostllama). Fixed issue with large manifest layers (thanks msvprogs).</PackageReleaseNotes>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>docker registry .net C# client</PackageTags>    
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net46|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="System.Buffers" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Http">
+      <Version>2.1.1</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>
